@@ -1,0 +1,49 @@
+<div class="col-md-8 offset-md-1">
+<h1>投稿詳細画面</h1>
+
+<table class="table table">
+<div>
+   <th colapan="3"></th>
+<h3>書籍名</h3>
+  <p><%= @book.title %></p>
+
+<h3>著者</h3>
+  <p><%= @book.author %></p>
+
+<% if @book.user == current_user %>
+<%= link_to "編集", edit_book_path(@book.id) %>
+<% end %>
+</div>
+
+
+<% if @book.favorited_by?(current_user) %>
+    <p>
+      <%= link_to book_favorites_path(@book), method: :delete do %>
+        ♥<%= @book.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to book_favorites_path(@book), method: :post do %>
+        ♡<%= @book.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
+
+
+<div>
+  <p>コメント件数：<%= @book.book_comments.count %></p>
+  <% @book.book_comments.each do |book_comment| %>
+    <%= book_comment.user.name %>
+    <%= book_comment.created_at.strftime('%Y/%m/%d') %>
+    <%= book_comment.comment %>
+  <% end %>
+</div>
+
+<div>
+  <%= form_with model: [@book, @book_comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</table>
+</div>

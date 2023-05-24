@@ -1,0 +1,20 @@
+<h1>ユーザー情報</h1>
+<div>
+  <h3><%= @user.name %></h3>
+
+  <% if @user == current_user %>
+  <p><%= link_to "プロフィール編集", edit_user_path(@user.id) %></p>
+  <% end %>
+</div>
+
+<%= link_to "いいねした投稿", favorites_user_path(@user) %>
+
+<h1>ユーザーの投稿一覧</h1>
+
+<% @books.each do |book| %>
+<div>
+  <p>書籍名：<%= link_to book.title, "/books/#{book.id}" %></p>
+  <p>ユーザーネーム：<%= book.user.name %></p>
+</div>
+
+<% end %>

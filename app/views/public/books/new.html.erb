@@ -1,0 +1,22 @@
+<h1>新規投稿画面</h1>
+
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<%= form_with model: @book, url: books_path do |f| %>
+
+  <h4>書籍名</h4>
+  <%= f.text_field :title %>
+
+  <h4>著者</h4>
+  <%= f.text_area :author %>
+
+  <%= f.submit '投稿' %>
+<% end %>

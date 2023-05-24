@@ -1,0 +1,21 @@
+<div class="col-md-8 offset-md-1">
+<p>いいねした投稿一覧</p>
+
+
+<table class="table table">
+  <thead>
+  <tr>
+    <th colapan="3"></th>
+    <th>書籍名</th>
+    <th>投稿者名</th>
+  </tr>
+  </thead>
+
+  <tbody>
+<% @favorites.each do |favorite| %>
+ <th colapan="3"></th>
+  <td><%= @book.title %></td>
+  <td><%= @user.name %></td>
+</tbody>
+</div>
+<% end %>
