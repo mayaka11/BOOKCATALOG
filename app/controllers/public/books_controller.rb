@@ -16,6 +16,9 @@ class Public::BooksController < ApplicationController
 
   def index
     @books = Book.all
+
+    @tags = Tag.all
+    @books = params[:name].present? ? Tag.find(params[:name]).books : Book.all
   end
 
 
@@ -37,9 +40,10 @@ class Public::BooksController < ApplicationController
   end
 
 
+
     private
 
   def book_params
-    params.require(:book).permit(:memo, :title, :comment, :author, :publisher)
+    params.require(:book).permit(:tag, :memo, :title, :comment, :author, :publisher, tag_ids: [])
   end
 end

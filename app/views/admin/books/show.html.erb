@@ -10,6 +10,18 @@
 <h3>著者</h3>
   <p><%= @book.author %></p>
 
+<h3>出版社</h3>
+  <p><%= @book.publisher %></p>
+
+<h3>MEMO</h3>
+  <p><%= @book.memo %></p>
+
+<h3>タグ</h3>
+  <% @book.tags.each do |tag| %>
+    <%= tag.name %>
+  <% end %>
+
+
 <% if @book.user == current_user %>
 <%= link_to "編集", edit_book_path(@book.id) %>
 <% end %>

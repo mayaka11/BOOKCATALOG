@@ -15,6 +15,9 @@
 <% @books.each do |book| %>
  <th colapan="3"></th>
   <td><%= link_to book.title, "/admin/books/#{book.id}" %></td>
+   <% book.tags.each do |tag| %>
+  <td><%= tag.name %></td>
+     <% end %>
 </tbody>
 </div>
 <% end %>

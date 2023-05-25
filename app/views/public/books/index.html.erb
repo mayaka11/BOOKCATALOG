@@ -1,7 +1,16 @@
-
 <div class="col-md-8 offset-md-1">
-<h1>投稿一覧</h1>
 
+
+<%= form_tag books_path, method: :get, class: 'boards__searchForm' do %>
+<h1>タグ検索</h1>
+  <% @tags.each do |tag| %>
+      <div class="tag-box">
+        <%= link_to tag.name, books_path(name: tag.id) %>
+      </div>
+  <% end %>
+
+
+<h1>投稿一覧</h1>
 <table class="table table">
   <thead>
   <tr>
@@ -15,6 +24,10 @@
 <% @books.each do |book| %>
  <th colapan="3"></th>
   <td><%= link_to book.title, "/books/#{book.id}" %></td>
+  <% book.tags.each do |tag| %>
+  <td><%= tag.name %></td>
+     <% end %>
 </tbody>
 </div>
+<% end %>
 <% end %>

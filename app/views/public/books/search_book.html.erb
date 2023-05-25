@@ -1,0 +1,9 @@
+
+
+<% @books.each do |book| %>
+
+<td><%= link_to book_path(book.id) do %><%= book.title %></td>
+<td><%= book.body %></td>
+<td><%= link_to book.category, search_book_path(keyword: book.category) %></td>
+
+<% end %>
