@@ -1,6 +1,8 @@
 <h1>ユーザー情報</h1>
 <div>
-  <h3><%= @user.name %></h3>
+  <h3>名前 : <%= @user.name %></h3>
+  <h3>自己紹介 : <%= @user.introduction %></h3>
+  <h3>メールアドレス : <%= @user.email %></h3>
 
   <% if @user == current_user %>
   <p><%= link_to "プロフィール編集", edit_user_path(@user.id) %></p>

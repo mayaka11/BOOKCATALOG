@@ -2,5 +2,12 @@
 <%= form_with model: @user do |f| %>
   <label for="inputName">Name</label>
   <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+
+  <label for="inputIntroduction">自己紹介</label>
+  <%= f.text_area :introduction %>
+
+  <label for = "inputEmail">メールアドレス</label>
+  <%= f.text_field :email %>
+
   <%= f.submit "変更を保存" %>
 <% end %>
