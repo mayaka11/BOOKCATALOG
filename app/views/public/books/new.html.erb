@@ -13,10 +13,17 @@
 <%= form_with model: @book, url: books_path do |f| %>
 
   <h4>書籍名</h4>
-  <%= f.text_field :title %>
+  <%= f.text_area :title %>
 
   <h4>著者</h4>
   <%= f.text_area :author %>
+
+  <h4>出版社</h4>
+  <%= f.text_area :publisher %>
+
+ <h4>MEMO</h4>
+  <%= f.text_area :memo %>
+
 
 
 <div class="check_box">
