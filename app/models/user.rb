@@ -15,7 +15,7 @@ class User < ApplicationRecord
    validates :email
  end
 
-
+#
 
   # 検索方法分岐
   def self.looks(search, word)
