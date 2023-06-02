@@ -21,11 +21,13 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 root to: "homes#top"
 scope module: :public do
+
     resources :books, only: [:new, :index, :show, :edit, :create, :update] do
         resource :favorites, only: [:create, :destroy]
         resources :book_comments, only: [:create]
 
     end
+
     resources :users, omly: [:show, :edit, :update] do
       member do
         get :favorites

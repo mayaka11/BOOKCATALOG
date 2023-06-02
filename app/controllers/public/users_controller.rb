@@ -20,11 +20,10 @@ class Public::UsersController < ApplicationController
 
 
   def favorites  # いいね機能
-
-
     favorites = Favorite.where(user_id: current_user.id).pluck(:book_id)
     @favorite_books = Book.find(favorites)
   end
+
 
 
   private
