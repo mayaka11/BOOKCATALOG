@@ -4,7 +4,7 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= user.name %></td>
+          <td>名前：<%= link_to user.name, "/users/#{user.id}" %></td>
         </tr>
       <% end %>
     </tbody>
@@ -13,7 +13,9 @@
     <tbody>
       <% @books.each do |book| %>
         <tr>
-          <td><%= book.title %></td>
+          <td>書籍名：</td>
+          <td><%= link_to book.title, "/books/#{book.id}" %></td><br>
+          <td>著者：</td>
           <td><%= book.author %></td>
         </tr>
       <% end %>

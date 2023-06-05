@@ -21,22 +21,24 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 root to: "homes#top"
 scope module: :public do
-
     resources :books, only: [:new, :index, :show, :edit, :create, :update] do
         resource :favorites, only: [:create, :destroy]
         resources :book_comments, only: [:create]
-
     end
-
     resources :users, omly: [:show, :edit, :update] do
+       resource :relationships, only: [:create, :destroy]
+        get 'followings' => 'relationships#followings', as: 'followings'
+        get 'followers' => 'relationships#followers', as: 'followers'
       member do
         get :favorites
-      end
+        resource :relationships, only: [:create, :destroy]
+        get 'followings' => 'relationships#followings', as: 'followings'
+        get 'followers' => 'relationships#followers', as: 'followers'
+        end
     end
     get 'screens/screen'
     get 'searches/search'
     get 'screens/guest'
-
 end
 
 namespace :admin do
@@ -46,7 +48,5 @@ namespace :admin do
   get 'screens/screen'
   resources :users, only: [:index, :show]
 end
-
-
  post '/homes/guest_sign_in', to: 'homes#new_guest'
 end
