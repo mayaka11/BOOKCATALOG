@@ -13,13 +13,9 @@
 <body>
   <header>
     <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-      <li>
-        <%= link_to "ホーム", screens_screen_path %>
-      </li>
-      <li>
+        <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary" %>
+        <%= button_to "ホーム", screens_screen_path, method: :get, class: "btn btn-outline-secondary" %>
+
          <div class="search_form">
           <%= form_with url: searches_search_path, local: true, method: :get do |f| %>
           <%= f.text_field :word %>
@@ -28,24 +24,14 @@
           <%= f.submit "検索", class: "btn-sm btn-primary" %>
           <% end %>
          </div>
-      </li>
+
     <% elsif admin_signed_in? %>
-       <li>
-        <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
-      </li>
-      <li>
-        <%= link_to "管理者側のホームへ戻る", admin_screens_screen_path %>
-      </li>
+         <%= button_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary" %>
+         <%= button_to "管理者側のホームへ戻る", admin_screens_screen_path, method: :get, class: "btn btn-outline-secondary" %>
     <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-      <li>
-        <%= link_to "TOPへ戻る", root_path %>
-      </li>
+        <%= button_to "新規登録", new_user_registration_path, method: :get, class: "btn btn-outline-secondary" %>
+        <%= button_to "ログイン", new_user_session_path, method: :get, class: "btn btn-outline-secondary" %>
+        <%= button_to "TOPへ戻る", root_path, method: :get, class: "btn btn-outline-secondary" %>
     <% end %>
   </header>
     <%= yield %>
