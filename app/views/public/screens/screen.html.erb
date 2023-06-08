@@ -1,5 +1,13 @@
-<h1>ユーザーホーム画面</h1>
+<h1>ユーザーホーム</h1>
 
-<%= link_to "マイリスト", user_path(current_user.id) %>
-<%= link_to "投稿する", new_book_path %>
-<%= link_to "投稿一覧", books_path %>
+<div class="col-lg-8">
+<table>
+
+  <td><%= button_to "マイリスト", user_path(current_user.id), method: :get, class: "btn btn-secondary btn-xs" %></td>
+
+  <td><%= button_to "投稿する", new_book_path, method: :get, class: "btn btn-secondary btn-xs" %></td>
+
+  <td><%= button_to "投稿一覧", books_path, method: :get, class: "btn btn-secondary btn-xs" %></td>
+
+ </table>
+  </div>

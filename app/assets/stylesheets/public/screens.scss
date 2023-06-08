@@ -1,3 +1,10 @@
 // Place all the styles related to the public/screens controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+// You can use Sass (SCSS) here: https://sass-lang.com
+
+
+.btn-xs {
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+}

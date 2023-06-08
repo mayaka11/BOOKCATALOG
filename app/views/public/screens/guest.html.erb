@@ -1,2 +1,8 @@
 <h1>ゲストログインホーム画面</h1>
-<%= link_to "投稿一覧", books_path %>
+
+
+<div class="col-lg-8">
+<table>
+<td><%= button_to "投稿一覧", books_path, method: :get, class: "btn btn-secondary btn-sm" %></td>
+</table>
+</div>
